@@ -1,12 +1,12 @@
-import config from './config.js';
-import fastifyPlugin from 'fastify-plugin';
+import config from '../config/config.js';
+// import fastifyPlugin from 'fastify-plugin';
 import sequelizeFastify from 'sequelize-fastify';
 
-const sequelize = async (fastify, options) => {
+const db = async (fastify, options) => {
     fastify.register(sequelizeFastify, {
-        instance: 'db',
+        instance: 'sequelize',
         sequelizeOptions: {
-            dialect: 'mysql',
+            dialect: config.mysql.dialect,
             database: config.mysql.database,
             username: config.mysql.username,
             password: config.mysql.password,
@@ -15,7 +15,7 @@ const sequelize = async (fastify, options) => {
         }
     }).ready(async () => {
         try {
-            const result = await fastify.db.authenticate();
+            const result = await fastify.sequelize.authenticate();
             console.log('Database connection is successfully established.');
         }
         catch(err) {
@@ -26,4 +26,5 @@ const sequelize = async (fastify, options) => {
     });
 }
 
-export default fastifyPlugin(sequelize);
+// export default fastifyPlugin(db);
+export default db;

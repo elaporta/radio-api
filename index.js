@@ -1,12 +1,12 @@
-import config from './configs/config.js';
 import Fastify from 'fastify';
+import config from './config/config.js';
+import db from './database/connection.js';
 import routes from './routes/routes.js';
-import sequelize from './configs/sequelize.js';
 
 const fastify = Fastify();
 
-// Register sequelize (mysql DB)
-fastify.register(sequelize);
+// Register mysql DB connection
+fastify.register(db);
 
 // Register api routes
 fastify.register(routes);

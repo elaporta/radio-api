@@ -5,6 +5,10 @@
     "fastify": "^4.28.1",
     "fastify-plugin": "^4.5.1",
     "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3",
     "sequelize-fastify": "^2.0.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
   }
 }
