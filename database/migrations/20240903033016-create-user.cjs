@@ -1,8 +1,9 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Radios', {
+        await queryInterface.createTable('users', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -12,16 +13,10 @@ module.exports = {
             name: {
                 type: Sequelize.STRING
             },
-            raddios_url: {
+            lastName: {
                 type: Sequelize.STRING
             },
-            img_url: {
-                type: Sequelize.STRING
-            },
-            img_file: {
-                type: Sequelize.STRING
-            },
-            stream_url: {
+            email: {
                 type: Sequelize.STRING
             },
             created_at: {
@@ -35,6 +30,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('Radios');
+        await queryInterface.dropTable('users');
     }
 };

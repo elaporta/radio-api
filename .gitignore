@@ -129,6 +129,14 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# MAC
+# Mac
 .DS_Store
 **/.DS_Store
+
+# Images
+*.png
+*.jpg
+*.webp
+
+# json files
+database/seeders/jsons/*.json

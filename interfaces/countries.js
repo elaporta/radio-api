@@ -1,1 +1,0 @@
-export default ['URY', 'ARG', 'BRA', 'CHL', 'ESP', 'USA'];

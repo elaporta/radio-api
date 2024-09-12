@@ -4,8 +4,6 @@ const get = async (req, reply) => {
     return req;
 };
 
-const userMiddleware = {
+export default {
     get: get
-};
-
-export default userMiddleware;
+}

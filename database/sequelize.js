@@ -7,8 +7,7 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
     dialect: config.mysql.dialect,
     logging: config.mysql.logging,
     dialectOptions: { supportBigNumbers: true, multipleStatements: true },
-    pool: { max: 5, min: 0, acquire: 30000, idle: 10000 },
-    // operatorsAliases: { $not: Sequelize.Op.not, $in: Sequelize.Op.in, $notIn: Sequelize.Op.notIn, $or: Sequelize.Op.or, $gt: Sequelize.Op.gt, $gte: Sequelize.Op.gte, $lte: Sequelize.Op.lte, $between: Sequelize.Op.between, $like: Sequelize.Op.like }
+    pool: { max: 5, min: 0, acquire: 30000, idle: 10000 }
 });
 
 sequelize.rawQuery = async (query, returnType = '') => {

@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database/sequelize.js';
-import countries from '../interfaces/countries.js';
+import countries from '../datasets/countries.js';
 
 // Options
 const options = {

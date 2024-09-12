@@ -14,8 +14,6 @@ const get = async (req, reply) => {
     }
 };
 
-const userController = {
+export default {
     get: get
-};
-
-export default userController;
+}

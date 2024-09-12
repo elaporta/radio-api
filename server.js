@@ -1,9 +1,13 @@
 import Fastify from 'fastify';
+import { fastifyStatic } from '@fastify/static';
 import config from './config/config.js';
 import sequelize from './database/sequelize.js';
 import routes from './routes/routes.js';
 
 const fastify = Fastify();
+
+// Register static/images folder
+fastify.register(fastifyStatic, { root: `${config.server.rootdir}/static/images`, prefix: '/images/' });
 
 // Register api routes
 fastify.register(routes);
