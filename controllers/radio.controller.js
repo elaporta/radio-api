@@ -41,8 +41,8 @@ const find = async (req, reply) => {
         let radios = await Radio.findAll({ where: conditions });
 
         // memory
-        if(location) radios = radios.filter(radio => Array.isArray(radio.locations) && radio.locations.includes(location));
-        if(genre) radios = radios.filter(radio => Array.isArray(radio.genres) && radio.genres.includes(genre));
+        if(location) radios = radios.filter(radio => Array.isArray(radio.locations) && radio.locations.includes(String(location).toLowerCase()));
+        if(genre) radios = radios.filter(radio => Array.isArray(radio.genres) && radio.genres.includes(String(genre).toLowerCase()));
 
         const response = { statusCode: 200, message: 'Success', data: radios };
         reply.code(response.statusCode).send(response);

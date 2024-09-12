@@ -21,6 +21,10 @@ const radioSchema = {
                 location: { type: 'string', minLength: 1 },
                 genre: { type: 'string', minLength: 1 }
             },
+            dependencies: {
+                location: ['country'],
+                genre: ['country']
+            },
             additionalProperties: false
         }
     }
