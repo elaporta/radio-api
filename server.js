@@ -1,10 +1,14 @@
 import Fastify from 'fastify';
+import cors from '@fastify/cors'
 import { fastifyStatic } from '@fastify/static';
 import config from './config/config.js';
 import sequelize from './database/sequelize.js';
 import routes from './routes/routes.js';
 
 const fastify = Fastify();
+
+// Register cors
+await fastify.register(cors);
 
 // Register static/images folder
 fastify.register(fastifyStatic, { root: `${config.server.rootdir}/static/images`, prefix: '/images/' });
