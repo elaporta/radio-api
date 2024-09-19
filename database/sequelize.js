@@ -11,10 +11,9 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
 });
 
 sequelize.rawQuery = async (query, returnType = '') => {
-    let response = {};
-    await sequelize.query(query, { raw: true }).spread((results, metadata) => response = results);
-    if(returnType == 'single' && response.length > 0) response = response[0];
-    return response;
+    const [results] = await sequelize.query(query, { raw: true });
+    if(returnType == 'single' && results.length > 0) results = results[0];
+    return results;
 }
 
 export default sequelize;

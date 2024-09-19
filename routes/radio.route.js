@@ -21,7 +21,12 @@ const radioRoute = [
         url: '/radio/find',
         schema: radioSchema.find,
         handler: radioController.find
-    }
+    },
+    {
+        method: 'GET',
+        url: '/radio/genres',
+        handler: radioController.getGenres
+    },
 ];
 
 export default radioRoute;

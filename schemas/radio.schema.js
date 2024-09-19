@@ -19,7 +19,8 @@ const radioSchema = {
                 country: { type: 'string', minLength: 3, maxLength: 3 },
                 ranking: { type: 'integer', minimum: 1 },
                 location: { type: 'string', minLength: 1 },
-                genre: { type: 'string', minLength: 1 }
+                genre: { type: 'string', minLength: 1 },
+                order: { type: 'string', enum: ['title', 'country', 'ranking'] }
             },
             dependencies: {
                 location: ['country'],

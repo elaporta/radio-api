@@ -18,14 +18,14 @@ module.exports = {
             ]
 
             const formattedData = radios.map((radio) => ({
-                title: radio.title,
+                title: String(radio.title).trim().replace(/\s+/g, ' '),
                 img_url: radio.img_url,
                 img_file: radio.img,
                 stream_url: radio.stream,
                 country: radio.country,
                 locations: String(JSON.stringify(radio.location)).toLowerCase(),
                 genres: String(JSON.stringify(radio.genres)).toLowerCase(),
-                description: radio.description,
+                description: String(radio.description).trim().replace(/\s+/g, ' '),
                 ranking: radio.ranking,
                 url: radio.web,
                 raddios_url: radio.url
