@@ -34,18 +34,22 @@ const find = async (req, reply) => {
         const orderBy = [['title', 'ASC']];
         const { id, title, country, ranking, location, genre, order } = req.query;
 
-        // mysql
+        // simple attributes
         if(id) conditions.id = id;
         if(title) conditions.title = { [Op.like]: `%${title}%` };
         if(country) conditions.country = country;
         if(ranking) conditions.ranking = { [Op.lte]: +ranking };
+
+        // json attributes
+        if(location || genre) conditions[Op.and] = [];
+        if(location) conditions[Op.and].push(sequelize.literal(`JSON_CONTAINS(locations, '"${location}"', '$')`));
+        if(genre) conditions[Op.and].push(sequelize.literal(`JSON_CONTAINS(genres, '"${genre}"', '$')`));
+
+        // order by
         if(order && order != 'title') orderBy.unshift([order, 'ASC']);
 
+        // find
         let radios = await Radio.findAll({ where: conditions, order: orderBy });
-
-        // memory
-        if(location) radios = radios.filter(radio => Array.isArray(radio.locations) && radio.locations.includes(String(location).toLowerCase()));
-        if(genre) radios = radios.filter(radio => Array.isArray(radio.genres) && radio.genres.includes(String(genre).toLowerCase()));
 
         const response = { statusCode: 200, message: 'Success', data: radios };
         reply.code(response.statusCode).send(response);

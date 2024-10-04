@@ -22,10 +22,6 @@ const radioSchema = {
                 genre: { type: 'string', minLength: 1 },
                 order: { type: 'string', enum: ['title', 'country', 'ranking'] }
             },
-            dependencies: {
-                location: ['country'],
-                genre: ['country']
-            },
             additionalProperties: false
         }
     }
