@@ -42,8 +42,8 @@ const find = async (req, reply) => {
 
         // json attributes
         if(location || genre) conditions[Op.and] = [];
-        if(location) conditions[Op.and].push(sequelize.literal(`JSON_CONTAINS(locations, '"${location}"', '$')`));
-        if(genre) conditions[Op.and].push(sequelize.literal(`JSON_CONTAINS(genres, '"${genre}"', '$')`));
+        if(location) conditions[Op.and].push(sequelize.literal(`JSON_CONTAINS(locations, '"${String(location).toLowerCase()}"', '$')`));
+        if(genre) conditions[Op.and].push(sequelize.literal(`JSON_CONTAINS(genres, '"${String(genre).toLowerCase()}"', '$')`));
 
         // order by
         if(order && order != 'title') orderBy.unshift([order, 'ASC']);
